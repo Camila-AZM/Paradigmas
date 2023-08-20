@@ -1,0 +1,215 @@
+| bloque resp a b nums |
+"TP 1: Conceptos básicos de SmallTalk"
+
+
+"----------------------1) Expresiones----------------------"
+5+6 "11 - Suma de números enteros"
+
+20 factorial "2432902008176640000 - Factorial del número 20"
+
+'Esto es una prueba' size "18 - Cantidad de caracteres que conforma el string"
+
+#( 1 3 5 7 ) at: 2 "3 - Valor que ocupa la posición 2"
+
+'Paradigmas' isArray  "false - Un string no es un arreglo"
+
+5 * 7 "35 - Multiplicación"
+
+5 // 2 "2 - Función DIV"
+
+4 \\ 3 "1 - Función MOD"
+
+2 / 6 "(1/3) - División normal"
+
+1.5 + 6.3e2 "631.5 - Suma de reales"
+
+Array new "#() - Crea un nuevo arreglo, no lo asigna a ningún lado"
+
+Date today "18 August 2023 - Fecha de hoy"
+
+Time now "10:03:18.026 am - Hora de hoy"
+
+
+"----------------------2) Mensajes unarios----------------------"
+#( 'arreglo' 'de' 'strings' ) size "3 - Cantidad de posiciones en el arreglo"
+
+'Hoy es Jueves' asUppercase "'HOY ES JUEVES' - Reemplaza todas las letras por su mayúscula"
+
+'hola aquí estoy' reversed "'yotse íuqa aloh' - Escribe el string al revés"
+
+#( 4 'cinco' 6 7 ) reversed "#(7 6 'cinco' 4) - Revierte las posiciones del arreglo"
+
+$A asciiValue "65 - Valor que toma el caracter A en ascii"
+
+65 asCharacter "$A - Caracter que toma el valor 65 en ascii".
+
+'cuál es la longitud de esta oración?' size  "36 - Cantidad de caracteres en el string"
+
+
+"----------------------3) Mensajes binarios----------------------"
+'hola', ' aquí estoy' "'hola aquí estoy' - Concatenación de strings"
+
+#(1 2 3), #(4 5 6) "#(1 2 3 4 5 6) - Concatenación de arreglos, formando uno solo" 
+
+4 = 5 "false - 4 no es igual a 5"
+
+#(1 2 $a), #($b 'cd') "#(1 2 $a $b 'cd') - Concatenación de arreglos"
+
+
+"----------------------4) Mensajes de palabra clave----------------------"
+'Esto es una prueba' at: 3 "$t - Muestra el 3er caracter"
+
+'Hola' includes: $o. "true - Indica si el string contiene 'o'"
+
+'hola' at: 1 put: $H "no me funciona"
+
+'Paradigmas de Programación' copyFrom: 4 to: 9 "'adigma' - Copia el string desde el 4to al 9no caracter"
+
+#( 9 8 7 6 5 ) at: 3 "7 - Devuelve el valor que hay en la posición 3 del arreglo"
+
+#( 1 ( 2 3 ) 4 5 ) includes: #( 2 3 ) "true - Indica si el arreglo incluye o no tal valor"
+
+#( 9 8 7 6 5 ) copyFrom: 1 to: 2 "#(9 8) - Copia los valores de posiciones 1 a 2 del arreglo en uno nuevo"
+
+Array new: 10 "#(nil nil nil nil nil nil nil nil nil nil) - Crea un nuevo arreglo de 10 posiciones vacías, no lo asigna a ningún lado"
+
+
+"----------------------5) Mensajes anidados----------------------"
+'hola' size + 4 "8 - A la cantidad de caracteres del string, le suma 4"
+
+'ahora' size + #( 1 2 3 4 ) size "9 - A la cantidad de caracteres del string, le suma la cantidad de posiciones del arreglo"
+
+#( 1 12 24 36) includes: 4 factorial "true - Indica si el arreglo incluye el valor 4 factorial (24)"
+
+3 + 4 * 2 "14 - Pharo realiza las operaciones de izquierda a derecha, no jererquicamente. 3 + 4 = 7. 7*2 = 14"
+
+3 + ( 4 * 2 ) "11 - Al agregar parentesis, facilita a que las operaciones se realicen de manera correcta. 4*2 = 8. 8 + 3 = 11"
+
+4 factorial between: 3 + 4 and: 'hola' size * 7 "true - Indica si 4 factorial se encuentra entre un valor y otro. 3 + 4 = 7. 4 * 7 = 28. El rango de análisis es desde 7 a 28"
+
+4 factorial between: 3 + 4 and: 'hola' size * 5 "false - El rango de análisis es desde 7 a 20, 24 no se encuentra dentro del rango"
+
+'hola' at: ( #( 5 3 1 ) at: 2 ) "$l - Indica el caracter que está en la posición 3, la cual se define por la posición 2 de un arreglo (la posición 2 del arreglo tiene valor 3, por consiguiente la posición del carácter en el string va a ser 3"
+
+6 + 9 asString "Error - El objeto numérico 6 recibe una suma con el objeto string '9'"
+
+(6 + 9) asString "'15' - Forma correcta de realizar el anterior punto"
+
+Array with: 1 with: 'hola' with: (1/3) "{1. 'hola'. (1/3)} - Hace un arreglo con cada uno de los objetos indicados con 'with'"
+
+
+"----------------------6) Variables globales----------------------"
+"Variables compartidas Los identificadores que comienzan con letras
+mayúsculas son variables globales, variables de clase, diccionarios comunes (pool dictionaries) o nombres de clase. Transcript es una variable
+global, una instancia de la clase TranscriptStream."
+
+Display "DisplayScreen(0x0x32) - No sé jsdj"
+
+Transcript "nombra una instancia de TranscriptStream, un flujo
+de datos que escribe en una ventana que se desplaza"
+
+Debug " no se"
+
+Disk "no se"
+
+Distancia
+
+Distancia:= 15
+
+"----------------------7) Comparando objetos----------------------"
+3 < 4 "true"
+
+#( 1 2 3 4) = #(1 2 3 4) "true"
+
+'hola' <= 'adios' "false - Creo que este refiere al valor según su orden alfabético"
+
+'hola' <= 'zadios' "true - La letra Z está más alejada en un ámbito alfabético, se dice que 'tiene mayor valor'"
+
+5 = 2 + 3 "Error"
+
+5 = (2 + 3) "true - Importancia de paréntesis"
+
+
+"----------------------8) Blóques de código----------------------"
+[ $a isVowel ] value "true - a es una vocal"
+
+[ $b isVowel ] value "false - b no es una vocal"
+
+[ 3+4 . 'hola' asUpperCase ] value "Error"
+
+bloque:=[ 'Hola ', ' como estás ?' ].
+ ^bloque value. "'Hola  como estás ?' - Devuelve los valores de cada posición del arreglo"
+
+[ :c | c isVowel ] value: $a. "true - Cambia el valor de c por a en el arreglo"
+
+[ :c | c isVowel ] value: $b. "false - Cambia el valor de c por b en el arreglo"
+
+ bloque:=[ :a :b | a , b].
+resp:=bloque value: 'Hola ' value: ' como estás ?'.
+^resp "'Hola  como estás ?' - Hace una copia de bloque en resp, pero con los valores cambiados"
+
+ bloque:=[ :a :b | a , b].
+resp:=bloque.
+^resp "[ :a :b | a , b] - Lo mismo que el anterior, pero sin cambiar valores"
+
+
+"----------------------9) Expresiones booleanas----------------------"
+5 < 2 or: [ $a isVowel ] "true - F o V = V"
+
+5 < 2 "false"
+
+(5 < 2) not "true - Niega la anterior expresión"
+
+5 < 2 and: [ $a isVowel ] "false - F y V = F"
+
+(5 < 2) not and: [ $a isVowel ] "true - Niega el falso, V y V = V"
+
+(5 < 2) not or: [ 'hola' size < 2 and: [ $a isVowel ] ] "true - V o (F y V) = V o F = V"
+
+
+"--------------------10) ¿A qué clase pertenece cada objeto?--------------------"
+#(Francesca Jackie Marisa Bree) class "Array"
+
+'Rakesh Vijay Charles Daniel Tyler' class "ByteString"
+
+5 class "SmallInteger"
+
+(1/2) class "Fraction"
+
+5.2 class "SmallFloat64"
+
+
+"----------------------11) Mensajes en cascada----------------------"
+3 factorial; factorial; factorial "6 - Solo se realiza un factorial"
+
+3 factorial factorial factorial "un numero re largo"
+
+
+"----------------------12) Cambiar variables de instancia----------------------"
+a := #( 1 2 'sam' 'joe' #( 4 5 ) ).
+a at: 2 put: 3.
+a inspect "Error - El arreglo está en modo solo lectura, por lo que no se puede modificar"
+
+nums := Array newFrom: (1 to: 5).
+nums at: 1 put: 6.
+^nums
+
+
+"13) Condicionales"
+3 < 4 ifTrue: ['el bloque verdadero']
+ ifFalse: ['el bloque falso'] "'el bloque verdadero' - Si es vardadero, el condicional entrega ese mensaje"
+
+3 > 4 ifTrue: ['el bloque verdadero']
+ ifFalse: ['el bloque falso'] "'el bloque falso'"
+
+$b isVowel ifTrue:[^'es una vocal']
+ ifFalse:[^'es una consonante'] "'es una consonante'"
+
+$a isVowel ifTrue:[^'es una vocal']
+ ifFalse:[^'es una consonante'] "'es una vocal'"
+
+(5>2) ifTrue:['5 es MAYOR que 2']
+ ifFalse:['5 es menor que 2']. "'5 es MAYOR que 2'"
+
+(5<2) ifTrue:['5 es MAYOR que 2']
+ ifFalse:['5 es menor que 2'].  "'5 es menor que 2'"
