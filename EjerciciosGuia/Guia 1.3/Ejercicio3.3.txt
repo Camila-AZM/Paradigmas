@@ -1,0 +1,7 @@
+"3. Verificar si una frase es un palíndromo o no."
+
+| palabra alreves |
+
+palabra:= 'aeiso'.
+alreves := palabra reverse.
+(palabra = alreves) ifTrue: [^'Es un palindromo'] ifFalse: [ ^'No es un palindromo' ]

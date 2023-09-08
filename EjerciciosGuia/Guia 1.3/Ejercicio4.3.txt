@@ -1,0 +1,9 @@
+"4. Contar la cantidad de vocales de una frase."
+
+| palabra vocales |
+
+vocales:= 0.
+palabra:= 'hola'.
+1 to: (palabra size) do: [ :i|
+((palabra at: i) isVowel) ifTrue: [vocales:= vocales +1]].
+^('la cantidad de vocales es: ', vocales asString)

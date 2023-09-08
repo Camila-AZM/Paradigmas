@@ -1,0 +1,23 @@
+"5. Ingresar dos cadenas y devolver una 3º que contenga los elementos de las 2 anteriores pero intercalados."
+
+| cadena1 cadena2 cadena3 cont |
+
+cadena1:= 'hola'.
+cadena2:= 'adios'.
+cadena3:= ''.
+cont:= 0.
+
+1 to: ((cadena1 size) + (cadena2 size)) do:   [ :i|
+	(cadena1 size < (i // 2)) ifTrue: [ 
+						cadena3 := cadena3, ((cadena2 at: i)asString).
+						cont:= cont +1 ]
+						ifFalse: [ 
+						(cadena2 size < (cont // 2)) ifTrue: [ 
+											 cadena3 := cadena3, ((cadena1 at: i)asString).
+											cont:= cont +1]
+											ifFalse: [ 
+											 cadena3 := cadena3, ((cadena1 at: i)asString).
+											cadena3 := cadena3, ((cadena2 at: i)asString).
+											cont:= cont +2 ] 									] 
+			].
+^cadena3

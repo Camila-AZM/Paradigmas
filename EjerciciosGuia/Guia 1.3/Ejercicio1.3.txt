@@ -1,0 +1,5 @@
+"1. Convertir una cadena a mayúsculas y minúsculas."
+|cadena |
+cadena:= 'HOla'.
+
+^cadena asUppercase, cadena asLowercase

@@ -1,0 +1,13 @@
+"2. Dada una cadena de entrada, devolver otra en la que los caracteres en mayúsculas hayan sido cambiados por caracteres en minúsculas y viceversa."
+
+| cadena cadenainver letra |
+
+cadenainver := ''.
+1 to: (cadena size) do: [ :i |
+	letra:= cadena at: i.
+	(letra isUppercase) ifTrue: [ 
+		cadenainver:= cadenainver, ((letra asLowercase) asString)  ]
+							ifFalse: [ 
+		cadenainver := cadenainver, ((letra asUppercase) asString) ]
+	 ].
+^cadenainver 'hoLA'
